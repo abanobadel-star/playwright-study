@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","3048","check page to have title","chromium","Mon Sep 29 16:37:59 EET 2025","passed","Mon Sep 29 16:38:02 EET 2025","","Assertion.spec.ts","",""
+"","7259","check element to be enabled","chromium","Mon Sep 29 16:37:46 EET 2025","passed","Mon Sep 29 16:37:53 EET 2025","","Assertion.spec.ts","",""
+"","9548","check visiable of element","chromium","Mon Sep 29 16:37:29 EET 2025","passed","Mon Sep 29 16:37:39 EET 2025","","Assertion.spec.ts","",""
+"","2876","check element to have text","chromium","Mon Sep 29 16:37:53 EET 2025","passed","Mon Sep 29 16:37:56 EET 2025","","Assertion.spec.ts","",""
+"","2705","check element to have attribute","chromium","Mon Sep 29 16:37:56 EET 2025","passed","Mon Sep 29 16:37:59 EET 2025","","Assertion.spec.ts","",""
+"","3574","to have screenshot","chromium","Mon Sep 29 16:38:02 EET 2025","passed","Mon Sep 29 16:38:06 EET 2025","","Assertion.spec.ts","",""
+"","6861","check element to be present","chromium","Mon Sep 29 16:37:39 EET 2025","passed","Mon Sep 29 16:37:46 EET 2025","","Assertion.spec.ts","",""
