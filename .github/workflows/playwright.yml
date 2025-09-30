@@ -1,7 +1,7 @@
 name: Playwright Tests
 on:
   shedule:
-    - cron: '0 5 * * 0'  # Runs every Sunday at midnight
+    cron: '0 5 * * 0'  # Runs every Sunday at midnight
   push:
     branches: [ main, master ]
   pull_request:
