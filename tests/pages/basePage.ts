@@ -32,7 +32,7 @@ export class BasePage {
     // Optionally save a manual screenshot
     await this.page.screenshot({ path: `screenshot/${safeTitle}.png`, fullPage: true });
     // Use only the filename for snapshot comparison
-    expect(await this.page.screenshot({ fullPage: true })).toMatchSnapshot(`${safeTitle}.png`);
+    expect(await this.page.screenshot({ fullPage: true })).toMatchSnapshot(`${safeTitle}.png`, { threshold: 0.2 });
 }
     
 }

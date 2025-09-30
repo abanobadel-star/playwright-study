@@ -23,7 +23,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
    reporter: [
-    ['list'],
+    ['html'],
     ['allure-playwright', { outputFolder: 'allure-results' }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -33,7 +33,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless: false,
+    headless: process.env.CI ? true : false,
   },
 
   /* Configure projects for major browsers */
