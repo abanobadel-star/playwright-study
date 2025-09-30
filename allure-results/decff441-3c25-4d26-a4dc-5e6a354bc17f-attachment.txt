@@ -1,0 +1,3 @@
+response body for delete {
+  message: 'Object with id = ff8081819782e69e0199996668047da4 has been deleted.'
+}
