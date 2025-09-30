@@ -1,0 +1,2 @@
+file name is : spectrum-logo.png
+the file url is : /tmp/playwright-artifacts-3HBVcN/f6d6509f-fac8-4c53-ae96-30f762f83129

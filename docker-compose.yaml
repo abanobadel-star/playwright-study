@@ -1,0 +1,9 @@
+services:
+  playwright-test:
+    image: playwright-docker
+    build: .
+    volumes:
+      - ./:/ProjectHome
+    environment:
+      - CI=true
+      - commandToRunTests=npx playwright test --project=chromium
