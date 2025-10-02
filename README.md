@@ -11,4 +11,4 @@
 # docker run --rm docker-playwright
 
 ### to update docker from docker file :
-# docker build -t docker-playwright
+# docker build -t docker-playwright . 
