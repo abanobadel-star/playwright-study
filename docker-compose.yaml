@@ -4,6 +4,7 @@ services:
     build: .
     volumes:
       - ./:/ProjectHome
+      - /ProjectHome/node_modules   # <--- keep container node_modules
     environment:
       - CI=true
       - commandToRunTests=npx playwright test --project=chromium
