@@ -33,6 +33,10 @@ jobs:
       env:
         CI: true
       run: |
+        # Clean previous reports so uploaded artifacts are for this run only
+        rm -rf playwright-report || true
+        rm -rf test-results || true
+        rm -rf screenshot || true
         # Use xvfb-run to provide a virtual display which stabilizes screenshots on headless CI
         sudo apt-get install -y xvfb
         # Run tests and also generate an HTML report (playwright-report/)
