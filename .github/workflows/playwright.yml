@@ -17,10 +17,22 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm ci
+    - name: Install system dependencies and fonts
+      run: |
+        sudo apt-get update -y
+        # Common packages required for Playwright browsers on CI
+        sudo apt-get install -y ca-certificates fonts-liberation fonts-dejavu-core libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libxss1 libasound2 libx11-xcb1 libgbm1 libgtk-3-0 libxkbcommon0
+        # Optional: additional fonts to reduce visual diffs across environments
+        sudo apt-get install -y fonts-noto-color-emoji fonts-noto-core fonts-noto-ui-core fonts-roboto fonts-lato
     - name: Install Playwright Browsers
-      run: npx playwright install chromium --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright install --with-deps
+    - name: Run Playwright tests (headful under Xvfb for stable screenshots)
+      env:
+        CI: true
+      run: |
+        # Use xvfb-run to provide a virtual display which stabilizes screenshots on headless CI
+        sudo apt-get install -y xvfb
+        xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' npx playwright test --reporter=list
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
