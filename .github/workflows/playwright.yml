@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 5 * * 0' # Every Sunday at 5 AM UTC
+    - cron: '0 5 * * 0'
 
 jobs:
   playwright-tests:
@@ -14,16 +14,11 @@ jobs:
     timeout-minutes: 60
 
     steps:
-      # 🧱 Step 1: Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # 🧰 Step 2: Build Docker image (same as local Dockerfile)
-      - name: Build Playwright Docker image
-        run: |
-          docker build -t playwright-docker .
+      - name: Build Docker image
+        run: docker build -t playwright-docker .
 
-      # 🧪 Step 3: Run Playwright tests inside the Docker container
       - name: Run Playwright tests in Docker
         run: |
           docker run \
@@ -31,11 +26,13 @@ jobs:
             -e CI=true \
             -v ${{ github.workspace }}:/ProjectHome \
             playwright-docker sh -c "
+              cd /ProjectHome &&
+              npm ci &&
+              npx playwright install --with-deps &&
               rm -rf playwright-report test-results screenshot || true &&
               npx playwright test --reporter=html
             "
 
-      # 📦 Step 4: Upload test artifacts (reports, screenshots, diffs)
       - name: Upload Playwright reports and artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -46,4 +43,3 @@ jobs:
             test-results/
             screenshot/
           retention-days: 30
-
