@@ -40,7 +40,7 @@ jobs:
         # Use xvfb-run to provide a virtual display which stabilizes screenshots on headless CI
         sudo apt-get install -y xvfb
         # Run tests and also generate an HTML report (playwright-report/)
-        xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' npx playwright test --reporter=list --reporter=html || true
+        xvfb-run --auto-servernum --server-args='-screen 0 1280x1024x24' npx playwright test --reporter=list --reporter=html
 
     - name: Upload Playwright reports and artifacts
       uses: actions/upload-artifact@v4
