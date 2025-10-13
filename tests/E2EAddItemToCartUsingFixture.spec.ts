@@ -10,8 +10,8 @@ test.describe('E2E Add Item To Cart Test Suite', () => {
         await productPage.addProductToCart();
         await productPage.navigateToShoppingCart();
         const actualProductName = await cartPage.getCartItemName();
-       // await cartPage.takeScreenshot(test.info());
-       // await cartPage.verifyScreenshot(test.info());
+        await cartPage.takeScreenshot(test.info());
+        await cartPage.verifyScreenshot(test.info());
         expect(actualProductName.trim()).toBe(expectedProductName);
     });
 
@@ -21,8 +21,8 @@ test.describe('E2E Add Item To Cart Test Suite', () => {
         await productPage.addProductToCart();
         await productPage.navigateToShoppingCart();
         const actualProductName = await cartPage.getCartItemName();
-      //  await cartPage.takeScreenshot(test.info());
-       // await cartPage.verifyScreenshot(test.info());
+        await cartPage.takeScreenshot(test.info());
+        await cartPage.verifyScreenshot(test.info());
         expect(actualProductName.trim()).toBe(expectedProductName);
     });
 
