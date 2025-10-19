@@ -115,7 +115,7 @@ test('download file and save it', async({page}) =>{
     await page.goto('https://the-internet.herokuapp.com/download');
     const [download] = await Promise.all([
         page.waitForEvent('download'),
-        page.locator("a[href='download/spectrum-logo.png']").click()
+        page.locator("a[href='download/example.png']").click()
     ]);
     const path = await download.path();
     const fileName = download.suggestedFilename();
