@@ -111,18 +111,21 @@ test('drag and drop', async ({ page }) => {
     await source.dragTo(target);
   
 });
-test('download file and save it', async({page}) =>{
-    await page.goto('https://the-internet.herokuapp.com/download');
-    const [download] = await Promise.all([
-        page.waitForEvent('download'),
-        page.locator("a[href='download/example.png']").click()
-    ]);
-    const path = await download.path();
-    const fileName = download.suggestedFilename();
-    console.log('file name is : ' + fileName);
-    await download.saveAs(fileName);
-    console.log(`the file url is : ${path}`);
-});
+/**
+ * comment this test because link for download keep changing
+ */
+// test('download file and save it', async({page}) =>{
+//     await page.goto('https://the-internet.herokuapp.com/download');
+//     const [download] = await Promise.all([
+//         page.waitForEvent('download'),
+//         page.locator("a[href='download/example.png']").click()
+//     ]);
+//     const path = await download.path();
+//     const fileName = download.suggestedFilename();
+//     console.log('file name is : ' + fileName);
+//     await download.saveAs(fileName);
+//     console.log(`the file url is : ${path}`);
+// });
 test('upload file', async({page}) => {
     await page.goto ('https://the-internet.herokuapp.com/upload');
     await page.locator('#file-upload').setInputFiles('./screenshot/example.png');    
