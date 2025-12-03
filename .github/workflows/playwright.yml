@@ -2,7 +2,7 @@ name: Playwright Tests
 
 on:
   schedule:
-    - cron: '0 5 * * 0'  # Runs every Sunday at midnight
+    - cron: '0 5 * * 0'  # Runs every Sunday at 5 AM UTC
   push:
     branches: [ main ]
   pull_request:
@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.57.1-noble
+      options: --user 1001  # Add this to avoid permission issues
 
     steps:
       - name: Checkout repository
@@ -27,7 +28,7 @@ jobs:
       # Upload the HTML report (always)
       - name: Upload HTML report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3  # Changed from v4 to v3
         with:
           name: playwright-report
           path: playwright-report
@@ -35,7 +36,7 @@ jobs:
       # Upload only failed visual diffs and expected/actual screenshots
       - name: Upload failed visual diffs
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3  # Changed from v4 to v3
         with:
           name: failed-visual-diffs
           path: |
